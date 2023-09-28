@@ -13,7 +13,7 @@ class Veiculo(models.Model):
     modelo = models.CharField(max_length=100)
     ano = models.IntegerField()
     cor = models.SmallIntegerField(choices=OPCOES_CORES)
-    foto = models.ImageField(blank=True, null=True, upload_to=diretorio_imagens_veiculo)
+    foto = models.ImageField(blank=True, null=True, upload_to='veiculo/fotos')
     combustivel = models.SmallIntegerField(choices=OPCOES_COMBUSTIVEIS)
 
     @property
@@ -27,15 +27,6 @@ class Veiculo(models.Model):
             self.ano,
             self.get_cor_display()
         )
-    
-    def save(self, *args, **kwargs):
-        if self.pk is None:
-            foto_salva = self.foto
-            self.foto = None
-            super(Veiculo, self).save(*args,**kwargs)
-            self.foto = foto_salva
-            kwargs.update(force_insert = False)
-        super(Veiculo,self).save(*args,**kwargs)
     
     def anos_de_uso(self):
         return datetime.now().year - self.ano
