@@ -1,19 +1,4 @@
-<!--
-{% for v in veiculos %}
-
-<div>
-    {%if v.foto %} 
-        <img src="{{v.foto.url}}" alt="">
-    {% else %}
-        Veículo sem foto
-    {% endif %}
-
-    {{v.get_marca_display}} - {{v.modelo}}
-</div>
-{% endfor %}
--->
-
-{% extends "../base.html" %}
+{% extends "base.html" %}
 
 {% block titulo %} Listagem de veículos {% endblock %}
 
@@ -40,7 +25,7 @@
           <div class="card card-veiculo mt-3 mb-3">
 
             {% if v.foto %}
-              <img src="{{v.foto.url}}" class="card-img-top" />
+            <img src="{{v.foto.url}}" class="card-img-top"  />
             {% else %}
               Veículo sem foto
             {% endif %}
