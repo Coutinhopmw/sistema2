@@ -6,7 +6,7 @@ from veiculo.consts import OPCOES_COMBUSTIVEIS, OPCOES_CORES, OPCOES_MARCAS
 
 
 def diretorio_imagens_veiculo(instance,filename):
-    return 'veiculos/fotos/{0}/{1}'.format(instance.id, filename)
+    return 'veiculo/fotos/{0}/{1}'.format(instance.id, filename)
 
 class Veiculo(models.Model):
     marca = models.SmallIntegerField(choices=OPCOES_MARCAS)
